@@ -3533,7 +3533,7 @@ menu.action(stopanims_root,"Detach objects", {"detachobjects"}, "",function(on_c
 	removeObjectsFromPlayer(PLAYER.PLAYER_ID())
 end)
 
-local X_HandsUp = true
+local X_HandsUp = false
 menu.toggle(stopanims_root, "Hold X to Handsup", {""}, "hold X to handsup, this will also stop running animation", function (on_change)
     if on_change then X_HandsUp = true else X_HandsUp = false end
 end, X_HandsUp)
