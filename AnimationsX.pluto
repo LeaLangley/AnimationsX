@@ -81,7 +81,7 @@ scenarios_vroot = menu.list(props_root, "Scenarios", {""}, "Mixed set of prop an
 stopanims_root = menu.list(menu.my_root(), "Stop Animations", {""}, "Stop animations options")
 
 function play_anim(dict, name, duration)
-    ped = PLAYER.PLAYER_PED_ID()
+    ped = players.user_ped()
     while not STREAMING.HAS_ANIM_DICT_LOADED(dict) do
         STREAMING.REQUEST_ANIM_DICT(dict)
         util.yield()
@@ -91,7 +91,7 @@ function play_anim(dict, name, duration)
 end
 
 function play_animstationary(dict, name, duration)
-    ped = PLAYER.PLAYER_PED_ID()
+    ped = players.user_ped()
     while not STREAMING.HAS_ANIM_DICT_LOADED(dict) do
         STREAMING.REQUEST_ANIM_DICT(dict)
         util.yield()
@@ -100,7 +100,7 @@ function play_animstationary(dict, name, duration)
 end
 
 function play_animfreeze(dict, name, duration)
-    ped = PLAYER.PLAYER_PED_ID()
+    ped = players.user_ped()
     while not STREAMING.HAS_ANIM_DICT_LOADED(dict) do
         STREAMING.REQUEST_ANIM_DICT(dict)
         util.yield()
@@ -110,17 +110,17 @@ function play_animfreeze(dict, name, duration)
 end
 
 function play_animstopatlastframe(dict, name, duration)
-    ped = PLAYER.PLAYER_PED_ID()
+    ped = players.user_ped()
     while not STREAMING.HAS_ANIM_DICT_LOADED(dict) do
         STREAMING.REQUEST_ANIM_DICT(dict)
         util.yield()
     end
-    TASK.TASK_PLAY_ANIM(ped, dict, name, 8.0, 8.0, -1, 2, 0.0, false, false, false)
+    TASK.TASK_PLAY_ANIM(ped, dict, name, 8.0, 8.0, -1, 0, 0.0, false, false, false)
     --TASK_PLAY_ANIM(Ped ped, char* animDictionary, char* animationName, float blendInSpeed, float blendOutSpeed, int duration, int flag, float playbackRate, BOOL lockX, BOOL lockY, BOOL lockZ)
 end
 
 function play_animnoloop(dict, name, duration)
-    ped = PLAYER.PLAYER_PED_ID()
+    ped = players.user_ped()
     while not STREAMING.HAS_ANIM_DICT_LOADED(dict) do
         STREAMING.REQUEST_ANIM_DICT(dict)
         util.yield()
@@ -130,7 +130,7 @@ function play_animnoloop(dict, name, duration)
 end
 
 function play_animplayonce(dict, name, duration)
-    ped = PLAYER.PLAYER_PED_ID()
+    ped = players.user_ped()
     while not STREAMING.HAS_ANIM_DICT_LOADED(dict) do
         STREAMING.REQUEST_ANIM_DICT(dict)
         util.yield()
@@ -362,11 +362,11 @@ menu.action(idleanims_root, "Left Foot Up Standing", {""}, "", function(on_click
 end)
 
 menu.action(idleanims_root, "Smoke Idling", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_PROSTITUTE_HIGH_CLASS", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_PROSTITUTE_HIGH_CLASS", 0, true)
 end)
 
 menu.action(idleanims_root, "Standing with Phone", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_STAND_MOBILE", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_STAND_MOBILE", 0, true)
 end)
 
 menu.action(idleanims_root, "Take Selfies Idling", {""}, "", function(on_click)
@@ -380,7 +380,7 @@ menu.action(idleanims_root, "Overly Proud Standing", {""}, "", function(on_click
 end)
 
 menu.action(idleanims_root, "Partying & Beer", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_PARTYING", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_PARTYING", 0, true)
 end)
 
 menu.action(idleanims_root, "Pensive Standing", {""}, "", function(on_click)
@@ -932,7 +932,7 @@ menu.action(actions_vroot, "Cats Cradle", {""}, "", function(on_click)
 end)
 
 menu.action(actions_vroot, "Cheering Hyped", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_CHEERING", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_CHEERING", 0, true)
 end)
 
 menu.action(actions_vroot, "Chin Brush", {""}, "", function(on_click)
@@ -1398,11 +1398,11 @@ menu.action(gymanims_vroot, "Back Flip", {""}, "", function(on_click)
 end)
 
 menu.action(gymanims_vroot, "Barbell Curl", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_MUSCLE_FREE_WEIGHTS", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_MUSCLE_FREE_WEIGHTS", 0, true)
 end)
 
 menu.action(gymanims_vroot, "Bench Press", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "PROP_HUMAN_SEAT_MUSCLE_BENCH_PRESS_PRISON", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "PROP_HUMAN_SEAT_MUSCLE_BENCH_PRESS_PRISON", 0, true)
 end)
 
 menu.action(gymanims_vroot, "Chin Up", {""}, "", function(on_click)
@@ -1478,7 +1478,7 @@ menu.action(gymanims_vroot, "Sit Up", {""}, "", function(on_click)
 end)
 
 menu.action(gymanims_vroot, "Stationary Jog", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_JOG_STANDING", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_JOG_STANDING", 0, true)
 end)
 
 menu.action(gymanims_vroot, "Stretch Arms", {""}, "", function(on_click)
@@ -1508,7 +1508,7 @@ menu.action(gymanims_vroot, "Yoga A", {""}, "", function(on_click)
 end)
 
 menu.action(gymanims_vroot, "Yoga B", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_YOGA", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_YOGA", 0, true)
 end)
 
 menu.action(gymanims_vroot, "Yoga C", {""}, "", function(on_click)
@@ -1579,7 +1579,7 @@ menu.action(tuneranims_vroot, "Engine Maintenance 4", {""}, "", function(on_clic
 end)
 
 menu.action(tuneranims_vroot, "Hammering", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_HAMMERING", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_HAMMERING", 0, true)
 end)
 
 menu.action(tuneranims_vroot, "Inspect Components", {""}, "", function(on_click)
@@ -1632,7 +1632,7 @@ menu.action(tuneranims_vroot, "Tyre Maintenance", {""}, "", function(on_click)
 end)
 
 menu.action(tuneranims_vroot, "Welding", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_WELDING", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_WELDING", 0, true)
 end)
 
 menu.action(tuneranims_vroot, "Wiring Maintenance", {""}, "", function(on_click)
@@ -1722,7 +1722,7 @@ menu.action(copanims_vroot, "Crowd Control", {""}, "", function(on_click)
 end)
 
 menu.action(copanims_vroot, "Flashlight", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_SECURITY_SHINE_TORCH", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_SECURITY_SHINE_TORCH", 0, true)
 end)
 
 menu.action(copanims_vroot, "Hand Radio Chatter", {""}, "", function(on_click)
@@ -1772,7 +1772,7 @@ menu.action(copanims_vroot, "Show Badge/ID", {""}, "", function(on_click)
 end)
 
 menu.action(copanims_vroot, "Traffic Wand", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_CAR_PARK_ATTENDANT", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_CAR_PARK_ATTENDANT", 0, true)
 end)
 
 --- PHOTOS ---
@@ -1866,7 +1866,7 @@ menu.action(medicanims_vroot, "CPR (Kiss Of Life)", {""}, "", function(on_click)
 end)
 
 menu.action(medicanims_vroot, "Examine Victim", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "CODE_HUMAN_MEDIC_KNEEL", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "CODE_HUMAN_MEDIC_KNEEL", 0, true)
 end)
 
 menu.action(medicanims_vroot, "First Aid Kit", {""}, "", function(on_click)
@@ -1882,13 +1882,13 @@ menu.action(medicanims_vroot, "Medical Bag", {""}, "", function(on_click)
 end)
 
 menu.action(medicanims_vroot, "Notepad ", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "CODE_HUMAN_MEDIC_TIME_OF_DEATH", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "CODE_HUMAN_MEDIC_TIME_OF_DEATH", 0, true)
 	request_model_load(463086472)
     attachto(0.0, 0.0, 0.0, players.user(), 0.0, 0.0, 0.0, 463086472, 28422, false, false)
 end)
 
 menu.action(medicanims_vroot, "Tend To Victim", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "CODE_HUMAN_MEDIC_TEND_TO_DEAD", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "CODE_HUMAN_MEDIC_TEND_TO_DEAD", 0, true)
 end)
 
 menu.action(medicanims_vroot, "Time Of Death", {""}, "", function(on_click)
@@ -3036,7 +3036,7 @@ menu.action(foodanddrinks_vroot, "Ciggy (Attach)", {""}, "attaches between the l
 end)
 
 menu.action(foodanddrinks_vroot, "Ciggy (Smoke)", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_AA_SMOKE", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_AA_SMOKE", 0, true)
 end)
 
 menu.action(foodanddrinks_vroot, "Coffee", {""}, "", function(on_click)
@@ -3142,7 +3142,7 @@ menu.action(foodanddrinks_vroot, "Water", {""}, "", function(on_click)
 end)
 
 menu.action(foodanddrinks_vroot, "Joint (Smoke)", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_SMOKING_POT", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_SMOKING_POT", 0, true)
 end)
 
 menu.action(foodanddrinks_vroot, "Whisky Bottle", {""}, "", function(on_click)
@@ -3190,7 +3190,7 @@ menu.action(scenarios_vroot, "Basket Ball", {""}, "", function(on_click)
 end)
 
 menu.action(scenarios_vroot, "Binoculars", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_BINOCULARS", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_BINOCULARS", 0, true)
 end)
 
 menu.action(foodanddrinks_vroot, "Bong", {""}, "", function(on_click)
@@ -3274,7 +3274,7 @@ menu.action(scenarios_vroot, "Cash Offer", {""}, "", function(on_click)
 end)
 
 menu.action(scenarios_vroot, "Check Map", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_TOURIST_MAP", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_TOURIST_MAP", 0, true)
 end)
 
 menu.action(scenarios_vroot, "Check Tablet", {""}, "", function(on_click)
@@ -3290,7 +3290,7 @@ menu.action(scenarios_vroot, "Coin Toss", {""}, "", function(on_click)
 end)
 
 menu.action(scenarios_vroot, "Concrete Drilling", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_CONST_DRILL", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_CONST_DRILL", 0, true)
 end)
 
 menu.action(scenarios_vroot, "Console Gamer", {""}, "", function(on_click)
@@ -3320,7 +3320,7 @@ menu.action(scenarios_vroot, "Farmer", {""}, "", function(on_click)
 end)
 
 menu.action(scenarios_vroot, "Fishing", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_STAND_FISHING", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_STAND_FISHING", 0, true)
 end)
 
 menu.action(scenarios_vroot, "Flag Bearer (USA)", {""}, "", function(on_click)
@@ -3341,7 +3341,7 @@ menu.action(scenarios_vroot, "Garbage Bag", {""}, "", function(on_click)
 end)
 
 menu.action(scenarios_vroot, "Gardener", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_GARDENER_PLANT", 0, true)
 end)
 
 menu.action(scenarios_vroot, "Gold Bar Offer", {""}, "", function(on_click)
@@ -3399,11 +3399,11 @@ menu.action(scenarios_vroot, "Paint Brush", {""}, "", function(on_click)
 end)
 
 menu.action(scenarios_vroot, "Paparazzi", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_PAPARAZZI", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_PAPARAZZI", 0, true)
 end)
 
 menu.action(scenarios_vroot, "Phone Recording", {""}, "", function(on_click)
-    TASK.TASK_START_SCENARIO_IN_PLACE(PLAYER.PLAYER_PED_ID(), "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
+    TASK.TASK_START_SCENARIO_IN_PLACE(players.user_ped(), "WORLD_HUMAN_MOBILE_FILM_SHOCKING", 0, true)
 end)
 
 menu.action(scenarios_vroot, "Pizza Delivery", {""}, "", function(on_click)
@@ -3521,12 +3521,12 @@ end)
 ----- STOP ANIMATIONS -----
 
 menu.action(stopanims_root, "Stop animation", {"stopanim"}, "", function(on_click)
-    TASK.CLEAR_PED_TASKS(PLAYER.PLAYER_PED_ID())
-    TASK.CLEAR_PED_SECONDARY_TASK(PLAYER.PLAYER_PED_ID())
+    TASK.CLEAR_PED_TASKS(players.user_ped())
+    TASK.CLEAR_PED_SECONDARY_TASK(players.user_ped())
 end)
 
 menu.action(stopanims_root, "Force Stop animation", {"forcestopanim"}, "", function(on_click)
-    TASK.CLEAR_PED_TASKS_IMMEDIATELY(PLAYER.PLAYER_PED_ID())
+    TASK.CLEAR_PED_TASKS_IMMEDIATELY(players.user_ped())
 end)
 
 menu.action(stopanims_root,"Detach objects", {"detachobjects"}, "",function(on_click)
@@ -5446,20 +5446,20 @@ while true do
     if X_HandsUp then
         if PAD.IS_CONTROL_PRESSED(1, 323) then
             loadAnimation("random@mugging3")
-            if not ENTITY.IS_ENTITY_PLAYING_ANIM(PLAYER.PLAYER_PED_ID(), "random@mugging3", "handsup_standing_base", 3) then
-                TASK.CLEAR_PED_TASKS(PLAYER.PLAYER_PED_ID()) -- Clear Animation
-                TASK.CLEAR_PED_SECONDARY_TASK(PLAYER.PLAYER_PED_ID()) -- Clear Animation Secondary
+            if not ENTITY.IS_ENTITY_PLAYING_ANIM(players.user_ped(), "random@mugging3", "handsup_standing_base", 3) then
+                TASK.CLEAR_PED_TASKS(players.user_ped()) -- Clear Animation
+                TASK.CLEAR_PED_SECONDARY_TASK(players.user_ped()) -- Clear Animation Secondary
                 removeObjectsFromPlayer(PLAYER.PLAYER_ID()) -- remove objects from player
-                WEAPON.GIVE_WEAPON_TO_PED(PLAYER.PLAYER_PED_ID(), MISC.GET_HASH_KEY("WEAPON_UNARMED"), 1, false, true)
-                TASK.TASK_PLAY_ANIM(PLAYER.PLAYER_PED_ID(), "random@mugging3", "handsup_standing_base", 4, 4, -1, 51, 0, false, false, false)
+                WEAPON.GIVE_WEAPON_TO_PED(players.user_ped(), MISC.GET_HASH_KEY("WEAPON_UNARMED"), 1, false, true)
+                TASK.TASK_PLAY_ANIM(players.user_ped(), "random@mugging3", "handsup_standing_base", 4, 4, -1, 51, 0, false, false, false)
                 STREAMING.REMOVE_ANIM_DICT("random@mugging3")
-                PED.SET_ENABLE_HANDCUFFS(PLAYER.PLAYER_PED_ID(), true)
+                PED.SET_ENABLE_HANDCUFFS(players.user_ped(), true)
             end
         end
-        if PAD.IS_CONTROL_RELEASED(1, 323) and ENTITY.IS_ENTITY_PLAYING_ANIM(PLAYER.PLAYER_PED_ID(), "random@mugging3", "handsup_standing_base", 3) then
-            PED.SET_ENABLE_HANDCUFFS(PLAYER.PLAYER_PED_ID(), false)
-            TASK.CLEAR_PED_TASKS(PLAYER.PLAYER_PED_ID()) -- Clear Animation
-            TASK.CLEAR_PED_SECONDARY_TASK(PLAYER.PLAYER_PED_ID()) -- Clear Animation Secondary
+        if PAD.IS_CONTROL_RELEASED(1, 323) and ENTITY.IS_ENTITY_PLAYING_ANIM(players.user_ped(), "random@mugging3", "handsup_standing_base", 3) then
+            PED.SET_ENABLE_HANDCUFFS(players.user_ped(), false)
+            TASK.CLEAR_PED_TASKS(players.user_ped()) -- Clear Animation
+            TASK.CLEAR_PED_SECONDARY_TASK(players.user_ped()) -- Clear Animation Secondary
             removeObjectsFromPlayer(PLAYER.PLAYER_ID()) -- remove objects from player
         end
     end
